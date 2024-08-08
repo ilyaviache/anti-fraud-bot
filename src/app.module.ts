@@ -12,11 +12,9 @@ import { GqlConfigService } from './gql-config.service';
 import { BotModule } from './bot/bot.module';
 
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { SettingsModule } from './settings/settings.module';
 
 @Module({
   imports: [
-    SettingsModule,
     ConfigModule.forRoot({ isGlobal: true, load: [config] }),
     PrismaModule.forRoot({
       isGlobal: true,

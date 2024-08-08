@@ -1,20 +1,5 @@
 import { Context } from './bot.interface';
 import { ExtraEditMessageText } from 'telegraf/typings/telegram-types';
-import { Markup } from 'telegraf';
-import { COMMANDS } from './bot.constants';
-import { BotService } from './bot.service';
-import { UpsertWorksInput } from '../works/dto/upsert-works.input';
-
-export const createWorksDtoFactory = ({ id }) => {
-  return new UpsertWorksInput({
-    chatId: id,
-    listenChannelUsernames: [],
-    listenWords: [],
-    muteChannelUsernames: [],
-    muteUsernames: [],
-    muteWords: [],
-  });
-};
 
 export const replyOrEdit = async (
   ctx: Context,
@@ -39,22 +24,9 @@ export const replyOrEdit = async (
   return;
 };
 
-export const deleteUserReplyMessage = async (ctx: Context) =>
+export const deleteUserReplyMessage = async (ctx: Context) => {
   await ctx.tg.deleteMessage(ctx.message.from.id, ctx.message.message_id);
-
-// export const commandHandler = (
-//   ctx: Context,
-//   text: string,
-//   botService: BotService
-// ) => {
-//   if (text === '/' + COMMANDS.START) {
-//     ctx.scene.leave();
-//     ctx.session.messageId = undefined;
-//     botService.start(ctx);
-//     return true;
-//   }
-//   return false;
-// };
+};
 
 export const addPrevScene = (ctx: Context, scene: string) => {
   const state = ctx.scene.session.state;

@@ -5,7 +5,6 @@ import { InjectBot } from 'nestjs-telegraf';
 import { message } from 'telegram/client';
 
 import { UsersService } from 'src/users/users.service';
-import { MessagesService } from 'src/messages/messages.service';
 
 @Injectable()
 export class BotService {
