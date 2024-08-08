@@ -1,0 +1,12 @@
+node_modules/
+dist/
+prisma/*.db
+coverage/
+
+.DS_Store
+
+prisma/migrations/dev/
+
+newrelic_agent.log
+combined.log
+.env.local
