@@ -1,5 +1,5 @@
 import { UseFilters } from '@nestjs/common';
-import { InjectBot, Ctx, Start, Update } from 'nestjs-telegraf';
+import { InjectBot, Ctx, Start, Update, On, Hears } from 'nestjs-telegraf';
 import { BotFilter } from './bot.filter';
 import { Context } from './bot.interface';
 
@@ -38,8 +38,11 @@ export class BotUpdate {
       },
     };
     await ctx.reply('Welcome', replyMarkup);
-    // todo: service doesn't work
-    // await this.botNavigationService.firstTouch(ctx);
+  }
+
+  @On('text')
+  async onText(@Ctx() ctx: Context) {
+    await ctx.reply('Hello!');
   }
 
   // @Hears(MENU_BUTTONS.AREA.text)
